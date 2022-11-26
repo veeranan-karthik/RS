@@ -42,8 +42,9 @@ public class PdpPageSteps {
         pdpPage.selectProductImageSubMenu(subMenuOption);
     }
 
-    @Then("the left view of the image should be displayed")
-    public void theLeftViewOfTheImageShouldBeDisplayed() {
-
+    @Then("the {string} view of the image should be displayed")
+    public void theViewOfTheImageShouldBeDisplayed(String selectedOption) {
+        MatcherAssert.assertThat("PDP product image is not matching",
+                pdpPage.getSelectedImageName(selectedOption).equalsIgnoreCase("Left"));
     }
 }

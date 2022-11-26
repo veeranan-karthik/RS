@@ -25,6 +25,7 @@ public class BasePage {
     public WebDriver getWebDriver() {
         this.webDriver =DriverFactory.getInstance().getDriver();
         webdriverWait = new WebDriverWait(this.webDriver, DRIVER_WAIT_TIME);
+        webDriver.manage().window().maximize();
         return webDriver;
     }
 
@@ -80,13 +81,6 @@ public class BasePage {
         }
     }
 
-/*    public void waitForPage() {
-        LOG.info("Running : waiting for page to load");
-        new WebDriverWait(webDriver, 60).until(webDriver ->
-                ((JavascriptExecutor) webDriver).executeScript("return document.readyState")
-                        .equals("complete"));
-    }*/
-
     public Boolean isElementDisplayedOrNot(WebElement element) {
         boolean displayed = false;
         try {
@@ -109,21 +103,5 @@ public class BasePage {
         LOG.info("Running : hoverOnElement");
         Actions action = new Actions(webDriver);
         action.moveToElement(element).build().perform();
-    }
-
-    /**
-     * Returns the current page title from page
-     */
-    public String getCurrentPageTitle() {
-        LOG.info("Running : getCurrentPageTitle");
-        return getWebDriver().getTitle();
-    }
-
-    public void enterText(WebDriver driver, By element, String text) {
-        WebElement e = driver.findElement(element);
-        e.click();
-        e.clear();
-        e.sendKeys(text);
-        e.submit();
     }
 }

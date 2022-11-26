@@ -8,5 +8,5 @@ Feature: Search and Browse
     And user should be in PDP page
     Then the product title should contain "LD46"
     Then the product decription should contain "LD46-UL-715"
-    And user right click on the 3D product image, hovers on "Views" option and choose "left" side image
-    Then the left view of the image should be displayed
+    And user right click on the 3D product image, hovers on "Views" option and choose "Left" side image
+    Then the "Left" view of the image should be displayed

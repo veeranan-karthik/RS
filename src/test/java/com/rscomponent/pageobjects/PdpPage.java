@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
-import java.util.Collection;
 import java.util.List;
 
 public class PdpPage extends BasePage {
@@ -27,6 +26,9 @@ public class PdpPage extends BasePage {
 
     @FindBy(css = "li[title='Views'] > .menu > li")
     private List<WebElement> pdp3DViewsMenu;
+
+    @FindBy(css = ".menu > .menu-item.menu-item-selected")
+    private List<WebElement> selectedImageList;
 
     BasePage basePage;
 
@@ -66,11 +68,20 @@ public class PdpPage extends BasePage {
 
     public void selectProductImageSubMenu(String menuOption) {
         basePage.waitForVisibilityOfElements(pdp3DViewsMenu);
-        basePage.waitForVisibilityOfElements(pdp3DViewsMenu);
+        //basePage.waitForVisibilityOfElements(pdp3DViewsMenu);
         WebElement viewsMenuOption = pdp3DViewsMenu.stream()
-                .filter(option -> option.getText().equalsIgnoreCase(menuOption))
+                .filter(option -> option.getAttribute("innerText").equalsIgnoreCase(menuOption))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Views menu option not found for: " + menuOption));
+        basePage.waitForVisibilityOfElement(viewsMenuOption);
         basePage.clickUsingJS(viewsMenuOption);
+    }
+
+    public String getSelectedImageName(String selectedOption) {
+        WebElement selectedImageOption = selectedImageList.stream()
+                .filter(option -> option.getAttribute("innerText").equalsIgnoreCase(selectedOption))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Selected Image option not found for: " + selectedOption));
+        return selectedImageOption.getAttribute("innerText");
     }
 }
