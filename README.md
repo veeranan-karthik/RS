@@ -20,7 +20,7 @@ TestNG
 
 ###### How to run the tests
 
-Clone the repostory locally (git clone git@github.com:veeranan-karthik/RS.git)
+Clone the repostory locally (git clone https://github.com/veeranan-karthik/RS.git)
 Create a TestNG Runner with following VM options (Framework supports running tests using latest firefox and chrome browsers)
 Runner Class to be selected is : com.rscomponent.RunCuckesTest -Dbrowser=chrome -Dcucumber.options="--tags @search"
 WebDriverManager:
