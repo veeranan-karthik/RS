@@ -34,10 +34,12 @@ public class BasePage {
     }
 
     public WebElement waitForVisibilityOfElement(WebElement element) {
+        LOG.info("Running : waitForVisibilityOfElement");
         return webdriverWait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public List<WebElement> waitForVisibilityOfElements(List<WebElement> elements) {
+        LOG.info("Running : waitForVisibilityOfElements");
         return webdriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
@@ -82,6 +84,7 @@ public class BasePage {
     }
 
     public Boolean isElementDisplayedOrNot(WebElement element) {
+        LOG.info("Running : isElementDisplayedOrNot");
         boolean displayed = false;
         try {
             if (element.isDisplayed())
