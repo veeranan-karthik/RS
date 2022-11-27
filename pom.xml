@@ -53,7 +53,11 @@
                 </executions>
                 <configuration>
                     <sourceJsonReportDirectory>${project.build.directory}/cucumber-report</sourceJsonReportDirectory>
-                    <generatedHtmlReportDirectory>${project.build.directory}/generated-report</generatedHtmlReportDirectory>
+                    <generatedHtmlReportDirectory>${project.build.directory}/cucumber-html-report</generatedHtmlReportDirectory>
+                    <customParameters>
+                        <Custom_Parameter>This is a Technical Test</Custom_Parameter>
+                        <Custom_URL>https://www.traceparts.com/en</Custom_URL>
+                    </customParameters>
                     <expandBeforeAfterHooks>true</expandBeforeAfterHooks>
                     <expandStepHooks>true</expandStepHooks>
                     <expandDocStrings>true</expandDocStrings>
